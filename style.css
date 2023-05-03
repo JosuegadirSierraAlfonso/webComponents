@@ -1,0 +1,15 @@
+*{
+    margin: 1%;
+}
+.cuerpo{
+    display: flex;
+    background-color: aqua;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+.body{
+    width: 50%;
+}
+.sub{
+    width: 50%;
+}
