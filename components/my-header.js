@@ -8,10 +8,22 @@ export default class myHeader extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({ mode: "open" });
+    }
+    handleEvent(e){
+        (e.type === "click") ? this.enviar(e)
+        : undefined;
+    }
+    enviar(e){
+        console.log(e);
+        e.preventDefault();
+        alert("headeer");
+    }
+    connectedCallback(){
         Promise.resolve(myHeader.components()).then(html=>{
             this.shadowRoot.innerHTML = html;
+            this.MyHead = this.shadowRoot.querySelector(".hed")
+            this.MyHead.addEventListener("click", this.handleEvent.bind(this))
         })
-        console.log("funcionando");
     }
 }
 customElements.define(name, myHeader)

@@ -13,5 +13,21 @@ export default class myFooter extends HTMLElement{
         })
         console.log("funcionando");
     }
+    handleEvent(e){
+        (e.type === "click") ? this.send(e)
+        : undefined;
+    }
+    send(e){
+        console.log(e);
+        e.preventDefault();
+        alert("enviado");
+    }
+    connectedCallback(){
+        Promise.resolve(myFooter.components()).then(html=>{
+            this.shadowRoot.innerHTML = html;
+            this.foot = this.shadowRoot.querySelector("button")
+            this.foot.addEventListener("click", this.handleEvent.bind(this))
+        })
+    }
 }
 customElements.define(name, myFooter)
